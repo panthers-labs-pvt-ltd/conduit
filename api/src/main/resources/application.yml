@@ -1,0 +1,36 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: Conduit Metadata API
+  cloud:
+    config:
+      enabled: false
+  datasource:
+    url: jdbc:postgresql://localhost:15432/chimera_db_test
+    username: chimera_user
+    password: chimera_pass
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+
+  flyway:
+    enabled: false
+    schemas: test
+    cleanDisabled: true
+logging:
+  level:
+    org.springframework.boot.autoconfigure: DEBUG
+    org.springframework.boot.env: DEBUG
+    org.pantherslabs.chimera: DEBUG
+retry:
+  enabled: false
+
+keycloak:
+  setup:
+    enabled: false
+    realm: chimera
+    client:
+      clientId: chimera_api_client

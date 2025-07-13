@@ -1,0 +1,37 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="postgres" targetRuntime="MyBatis3DynamicSql">
+        <!-- 1. Plugins FIRST -->
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+
+        <!-- 2. Database Connection -->
+        <jdbcConnection
+                driverClass="org.postgresql.Driver"
+                connectionURL="${database.url}"
+                userId="${database.username}"
+                password="${database.password}"/>
+
+        <!-- 3. Model/Client Generators -->
+        <javaModelGenerator
+                targetPackage="org.pantherslabs.chimera.conduit.api.model"
+                targetProject="src/main/java"/>
+
+        <javaClientGenerator
+                type="ANNOTATEDMAPPER"
+                targetPackage="org.pantherslabs.chimera.conduit.api.mapper"
+                targetProject="src/main/java"/>
+
+        <!-- 4. Tables -->
+        <table schema="public" tableName="data_sources" delimitIdentifiers="true"/>
+        <table schema="public" tableName="organization_hierarchy" delimitIdentifiers="true"/>
+        <table schema="public" tableName="organization_types" delimitIdentifiers="true"/>
+
+    </context>
+</generatorConfiguration>
+

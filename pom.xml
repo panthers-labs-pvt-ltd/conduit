@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.pantherslabs.chimera</groupId>
+    <artifactId>conduit</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:panthers-labs-pvt-ltd/conduit.git</connection>
+        <developerConnection>scm:git:ssh://github.com:panthers-labs-pvt-ltd/conduit.git</developerConnection>
+        <url>https://github.com/panthers-labs-pvt-ltd/conduit.git</url>
+    </scm>
+
+
+
+
+    <repositories>
+        <repository>
+            <name>Central Portal Snapshots</name>
+            <id>central-portal-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <developers>
+        <developer>
+            <id>0001</id>
+            <name>Kumar, Manish</name>
+            <email>manish.kumar.gupta@outlook.com</email>
+        </developer>
+        <developer>
+            <id>0002</id>
+            <name>Prashant Kumar</name>
+            <email>prashantkumar.official@gmail.com</email>
+        </developer>
+        <developer>
+            <id>0003</id>
+            <name>Abhinav</name>
+            <email>abhinav.official@gmail.com</email>
+        </developer>
+    </developers>
+    <inceptionYear>2024</inceptionYear>
+    <name>Conduit - Data Ingestion System</name>
+    <description>Conduit is a next-generation data ingestion platform designed to simplify and accelerate how organizations integrate data—regardless of structure or source. With seamless support for relational databases, NoSQL systems, files, and real-time streams, Conduit delivers a unified pipeline experience. Its sophisticated, intuitive UI empowers both technical and non-technical users to orchestrate complex workflows, monitor ingestion in real time, and gain visibility across the data lifecycle—all without writing a single line of code.</description>
+    <url>https://github.com/panthers-labs-pvt-ltd/conduit</url>
+
+    <modules>
+        <module>api</module>
+        <module>ingestion</module>
+    </modules>
+
+
+    <properties>
+        <!-- Chimera version -->
+        <chimera.project.version>1.0-SNAPSHOT</chimera.project.version>
+        <!-- Compilation Option -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Recovery dependencies -->
+        <apache.httpcomponents.httpcore.version>4.4.14</apache.httpcomponents.httpcore.version>
+        <apache.httpcomponents.httpclient.version>4.5.14</apache.httpcomponents.httpclient.version>
+
+        <!-- testing -->
+        <junit.version>5.9.1</junit.version>
+        <scalatest.version>3.2.17</scalatest.version>
+        <junit.jupiter.version>5.10.0</junit.jupiter.version>
+        <mockito.inline.version>5.14.2</mockito.inline.version>
+        <mockito-junit-jupiter.version>5.14.2</mockito-junit-jupiter.version>
+        <mockito-core.version>5.14.2</mockito-core.version>
+
+        <!-- Build configurations -->
+        <maven.scala.plugin.version>4.7.2</maven.scala.plugin.version>
+        <maven.assembly-plugin.version>3.4.2</maven.assembly-plugin.version>
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+        <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
+        <scalatest.maven.plugin.version>2.2.0</scalatest.maven.plugin.version>
+
+        <!-- Sonar and jacoco Option -->
+        <!-- Jacoco is code coverage reports generator for Java projects -->
+        <!-- Sonar helps with clean code practices -->
+        <jacoco.version>0.8.4</jacoco.version>
+        <jacoco.coveredratio>0</jacoco.coveredratio>
+        <!-- Covered Ration is Set to 0 once Sonar Fixes are done we can reset -->
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.exclusions>target</sonar.exclusions>
+        <jacoco-maven-plugin_version>0.8.9</jacoco-maven-plugin_version>
+        <sonar-maven-plugin_version>3.9.1.2184</sonar-maven-plugin_version>
+
+        <!-- Email version -->
+        <javax.mail.version>1.6.2</javax.mail.version>
+
+        <!-- Scala -->
+        <scala.major.version>2.12</scala.major.version>
+        <scala.minor.version>16</scala.minor.version>
+        <scala.version>${scala.major.version}.${scala.minor.version}</scala.version>
+
+        <!-- Spark and its dependencies -->
+        <spark.version>3.5.4</spark.version>
+        <spark.scala.version>2.12</spark.scala.version>
+        <spark.kafka.sql.version>0-10</spark.kafka.sql.version>
+        <hadoop.version>3.3.3</hadoop.version>
+        <jersey-container-servlet-core_version>2.34</jersey-container-servlet-core_version>
+        <javax.servlet-api_version>4.0.1</javax.servlet-api_version>
+        <iceberg-spark-runtime-3.5-version>1.7.1</iceberg-spark-runtime-3.5-version>
+        <comet-spark-spark3.5-version>0.5.0</comet-spark-spark3.5-version>
+
+        <!-- Logging, Monitoring and DQ -->
+        <log4j.api.version>2.20.0</log4j.api.version>
+        <slf4j-api.version>2.0.9</slf4j-api.version>
+        <spline.agent.version>1.0.4</spline.agent.version>
+
+        <!-- Key dependencies -->
+        <kafka.clients.version>3.1.0</kafka.clients.version>
+        <aws.java.sdk2.version>2.26.16</aws.java.sdk2.version>
+
+        <!-- Helper and utility dependencies -->
+        <google.guava.version>31.1-jre</google.guava.version>
+        <snake.yaml.version>1.33</snake.yaml.version>
+        <lombok.version>1.18.36</lombok.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
+        <json.simple.version>1.1.1</json.simple.version>
+        <code.gson.version>2.9.0</code.gson.version>
+        <commons-text.version>1.10.0</commons-text.version>
+        <commons-csv.version>1.9.0</commons-csv.version>
+        <antlr4.version>4.9.3</antlr4.version>
+        <!-- Spring Boot versions -->
+        <spring-boot.version>3.4.1</spring-boot.version>
+        <!-- Spring Cloud versions -->
+        <spring-cloud.version>2024.0.0</spring-cloud.version>
+
+        <!-- Flyway version -->
+        <flyway-maven-plugin-version>11.3.2</flyway-maven-plugin-version>
+        <flyway-database-postgresql-version>11.3.2</flyway-database-postgresql-version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.pantherslabs.chimera</groupId>
+                <artifactId>unisca.logging</artifactId>
+                <version>${chimera.project.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-simple</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pantherslabs.chimera</groupId>
+                <artifactId>unisca.exception</artifactId>
+                <version>${chimera.project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.pantherslabs.chimera</groupId>
+                <version>${chimera.project.version}</version>
+                <artifactId>unisca.utilities</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.pantherslabs.chimera</groupId>
+                <version>${chimera.project.version}</version>
+                <artifactId>execution_engine</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.pantherslabs.chimera</groupId>
+                <artifactId>unisca.data_sources</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- Import Spring Boot BOM- Inheriting was wrong since it was not needed for non-spring boot modules-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring Cloud Dependencies BOM -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_${spark.scala.version}</artifactId>
+                <version>${spark.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_${spark.scala.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-avro_${spark.scala.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-token-provider-kafka-0-10_${spark.scala.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derby</artifactId>
+                <version>10.14.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql-kafka-0-10_${spark.scala.version}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <!-- Abhinav. Needed to add this to avoid  java.lang.NoClassDefFoundError: javax/servlet/http/HttpServlet error -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.containers</groupId>
+                <artifactId>jersey-container-servlet-core</artifactId>
+                <version>${jersey-container-servlet-core_version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.iceberg/iceberg-spark-runtime-3.5 -->
+            <dependency>
+                <groupId>org.apache.iceberg</groupId>
+                <artifactId>iceberg-spark-runtime-3.5_2.12</artifactId>
+                <version>${iceberg-spark-runtime-3.5-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version> <!-- Example latest -->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j2-impl</artifactId>
+                <version>${log4j.api.version}</version>
+            </dependency>
+            <!-- Log4j API -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-layout-template-json</artifactId>
+                <version>${log4j.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.15.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-scala_2.12</artifactId> <!-- Or _2.13 if using Scala 2.13 -->
+                <version>2.15.2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-csv</artifactId>
+                <version>2.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.15.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.temporal</groupId>
+            <artifactId>temporal-sdk</artifactId>
+            <version>1.27.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.temporal</groupId>
+            <artifactId>temporal-testing</artifactId>
+            <version>1.27.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+<!--    </dependencyManagement>-->
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin_version}</version>
+            </plugin>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>${maven.scala.plugin.version}</version>
+                <configuration>
+                    <scalaCompatVersion>${scala.major.version}</scalaCompatVersion>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <phase>compile</phase>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <phase>test-compile</phase>
+                    </execution>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin_version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <release>${maven.compiler.release}</release>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <!-- Testing -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <configuration>
+                    <argLine>
+                        -XX:+IgnoreUnrecognizedVMOptions
+                        --add-modules jdk.incubator.vector
+                        --add-opens=java.base/java.lang=ALL-UNNAMED
+                        --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+                        --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+                        --add-opens=java.base/java.io=ALL-UNNAMED
+                        --add-opens=java.base/java.net=ALL-UNNAMED
+                        --add-opens=java.base/java.nio=ALL-UNNAMED
+                        --add-opens=java.base/java.util=ALL-UNNAMED
+                        --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+                        --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED
+                        --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED
+                        --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+                        --add-opens=java.base/sun.nio.cs=ALL-UNNAMED
+                        --add-opens=java.base/sun.security.action=ALL-UNNAMED
+                        --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+                        --add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED
+                        -Djdk.reflect.useDirectMethodHandle=false
+                        -Dio.netty.tryReflectionSetAccessible=true
+                        -Xmx1024m
+                    </argLine>
+                </configuration>
+            </plugin>
+            <!--            <plugin>
+                            <groupId>org.scalatest</groupId>
+                            <artifactId>scalatest-maven-plugin</artifactId>
+                            <version>${scalatest.maven.plugin.version}</version>
+                            <configuration>
+                                <stdout>F</stdout>
+                                <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                                <junitxml>.</junitxml>
+                                <filereports>WDF TestSuite.txt</filereports>
+                                <argLine>
+                                    -XX:+IgnoreUnrecognizedVMOptions
+                                    &#45;&#45;add-modules jdk.incubator.vector
+                                    &#45;&#45;add-opens=java.base/java.lang=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.io=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.net=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.nio=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.util=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/jdk.internal.ref=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/sun.nio.cs=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/sun.security.action=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+                                    &#45;&#45;add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED
+                                    -Djdk.reflect.useDirectMethodHandle=false
+                                    -Dio.netty.tryReflectionSetAccessible=true
+                                    -Xmx1024m
+                                </argLine>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>test</id>
+                                    <goals>
+                                        <goal>test</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>-->
+            <!-- enforcers -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions/>
+                                <requireJavaVersion>
+                                    <version>17</version>
+                                    <message>Invalid Java version. It should be 17</message>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
+                    <!--<waitUntil>published</waitUntil>-->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version> <!-- Must be 3.1.0 -->
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                    <useAgent>false</useAgent>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

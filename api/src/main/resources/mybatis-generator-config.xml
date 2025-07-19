@@ -29,8 +29,12 @@
 
         <!-- 4. Tables -->
         <table schema="public" tableName="data_sources" delimitIdentifiers="true"/>
+        <table schema="public" tableName="data_sources_connections" delimitIdentifiers="true"/>
         <table schema="public" tableName="organization_hierarchy" delimitIdentifiers="true"/>
         <table schema="public" tableName="organization_types" delimitIdentifiers="true"/>
+        <table schema="public" tableName="data_pipelines" delimitIdentifiers="true">
+            <columnOverride column="pipeline_id" javaType="java.util.UUID"/>
+        </table>
 
     </context>
 </generatorConfiguration>
